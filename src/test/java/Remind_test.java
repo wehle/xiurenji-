@@ -1,6 +1,5 @@
 import Remind.Abnormal;
 import Remind.LoadPropertyUtils;
-import Remind.SendFIle_size;
 import org.junit.Test;
 
 public class Remind_test {

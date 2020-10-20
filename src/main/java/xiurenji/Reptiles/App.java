@@ -39,9 +39,9 @@ public class App
     * */
             if (SocksProxy)
             {
-                         System.setProperty("socksProxyHost", String.valueOf(LoadPropertyUtils.Getconfig("socksProxyHost")));
+             System.setProperty("socksProxyHost", String.valueOf(LoadPropertyUtils.Getconfig("socksProxyHost")));
 
-                         System.setProperty("socksProxyPort",  String.valueOf(LoadPropertyUtils.Getconfig("socksProxyPort")));
+             System.setProperty("socksProxyPort",  String.valueOf(LoadPropertyUtils.Getconfig("socksProxyPort")));
             }
 
         /*
