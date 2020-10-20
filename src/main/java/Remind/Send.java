@@ -5,8 +5,15 @@ package Remind;/*
 */
 
 import org.apache.commons.mail.HtmlEmail;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.io.File;
+import java.io.IOException;
+
+import java.net.URL;
 import java.util.Date;
 
 public class Send  {
@@ -26,7 +33,7 @@ public class Send  {
             email.setAuthentication(LoadPropertyUtils.Getemail("mail.username"),LoadPropertyUtils.Getemail("mail.password"));
             email.setSubject(subject);
 
-            email.setMsg("爬虫信息来了！"+new Date()+"<br>"+message);
+            email.setMsg("爬虫信息来了！"+new Date()+"<br>"+Getipaddres()+"<br>"+message);
             email.send();
 
         }catch (Exception e){
@@ -46,7 +53,16 @@ public class Send  {
                 total += getTotalSizeOfFilesInDir(child);
         return total;
     }
-
+    public  static  String Getipaddres() throws IOException {
+        Document document = Jsoup.parse(new URL("https://www.so.com/s?ie=utf-8&fr=none&src=360sou_newhome&nlpv=basesc&q=ip"),5000);
+        String url = null;
+        Elements element = document.getElementsByClass("mh-detail");
+        for (Element e:element
+        ) {
+         url = e.getElementsByTag("span").text();
+        }
+        return  url;
+        }
 
 
 }
